@@ -22,12 +22,7 @@ node {
    
    sh label: '', script: 'mvn test'
   }
- 
-   stage('Maven-Package') {
-  
-   sh label: '', script: 'mvn package'
-  }
-  stage('Sonar Analysis'){
+ stage('Sonar Analysis'){
 
 	withSonarQubeEnv('SonarQube'){
 	sh 'mvn sonar:sonar'
@@ -43,6 +38,11 @@ stage("Quality Gate"){
           }
       }        
       
+   stage('Maven-Package') {
+  
+   sh label: '', script: 'mvn package'
+  }
+  
 stage('Jfrog Artifacory Upload') {
 
 	def server= Artifactory.server 'Artifactory'
