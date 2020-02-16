@@ -49,7 +49,7 @@ stage('Jfrog Artifacory Upload') {
 	def uploadSpec= """{
 	"files": [{
 	"pattern": "/root/.jenkins/workspace/account-info/01-Jenkins/Code/petclinic/target/*.war",
-		"target": "petclinic-accountinfo"}]
+		"target": "accountinfo"}]
 	}"""
 server.upload(uploadSpec)
 }
